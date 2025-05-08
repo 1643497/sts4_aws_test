@@ -28,14 +28,14 @@ MemberService service;
 		String userId = (String)session.getAttribute("userId");
 		model.addAttribute("userId",userId);
 		model.addAttribute("memberList",memberList);
-		return "/member/memberList";
+		return "member/memberList";
 	}
 	@Override
 	@GetMapping("joinMember")
 	public String joinMember() {
 		
 		
-		return "/member/joinMember";
+		return "member/joinMember";
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ MemberService service;
 		service.joinMember(dto);
 		model.addAttribute("message","회원가입 완료");
 		model.addAttribute("redirectUrl","/member/memberList");
-		return "/common/alert";
+		return "common/alert";
 	}
 
 	@Override
@@ -52,7 +52,7 @@ MemberService service;
 	public String detailMember(String id,Model model) {
 		MemberDTO member = service.selectById(id);
 		model.addAttribute("member",member);
-		return "/member/detailMember";
+		return "member/detailMember";
 	}
 	@Override
 	@PostMapping("detailMember")
@@ -60,7 +60,7 @@ MemberService service;
 		service.updateMember(dto);
 		model.addAttribute("message","수정이 완료되었습니다");
 		model.addAttribute("redirectUrl","/member/memberList");
-		return "/common/alert";
+		return "common/alert";
 	}
 	@Override
 	@PostMapping("deleteMember")
@@ -68,13 +68,13 @@ MemberService service;
 		service.deleteMember(id);
 		model.addAttribute("message","삭제가 완료되었습니다");
 		model.addAttribute("redirectUrl","/member/memberList");
-		return "/common/alert";
+		return "common/alert";
 	}
 	@Override
 	@GetMapping("login")
 	public String login() {
 		
-		return "/member/login";
+		return "member/login";
 	}
 	
 	@Override
@@ -90,7 +90,7 @@ MemberService service;
 			model.addAttribute("message","로그인이 실패");
 			model.addAttribute("redirectUrl","/member/login");
 		}
-		return "/common/alert";
+		return "common/alert";
 	}
 	
 

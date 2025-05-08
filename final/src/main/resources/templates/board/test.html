@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<title>게시글 목록</title>
+	</head>
+	<body>
+		<p th:if="${user != null}">회원입니다</p>
+		<p th:unless="${user != null}">비회원입니다</p>
+		<div th:with="total=${price * quantity}">
+			<p th:text="${total}"></p>
+		</div>
+		<div th:with="role='admin'" th:switch="${role}">
+			<p th:case="'admin'">관리자</p>
+			<p th:case="'user'">사용자</p>
+			<p th:case="*">기타 사용자</p>
+		</div>
+		<a th:href="@{/board/boardList}">글 몰록</a>
+		<p th:text="${#dates.createToday()}"></p>
+		<p th:text="${#dates.createNow()}"></p>
+		<p th:text="${#dates.format(#dates.createNow(),'yyyy-MM-dd HH:mm:ss')}"></p>
+			<p th:text="${#strings.toUpperCase('abcdef')}"></p>
+			<p th:text="${#strings.toLowerCase('ABCDEF')}"></p>
+			<p th:text="${#strings.length('abcdef')}"></p>
+		
+	</body>
+</html>

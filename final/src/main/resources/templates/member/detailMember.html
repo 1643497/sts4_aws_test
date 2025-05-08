@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>게시글 목록</title>
+</head>
+
+<body>
+	<h1 align="center">게시글 목록</h1>
+	<hr>
+	<form method="post">
+	<table align="center" border="1" width="700">
+		<tr>
+			<th bgcolor="orange" width="10%">아이디</th>
+			<th bgcolor="orange" width="10%">암호</th>
+			<th bgcolor="orange" width="10%">이름</th>
+			<th bgcolor="orange" width="10%">이메일</th>
+			<th bgcolor="orange" width="10%">가입일자</th>
+			<th bgcolor="orange" width="10%">수정/삭제</th>
+		</tr>
+		<tr>
+			<td><input type="text" name="id" th:value="${member.id}" readonly></td>
+			<td><input type="text" name="pwd" th:value="${member.pwd}"></td>
+			<td align="center"><input type="text" name="name" th:value="${member.name}"></td>
+			<td align="center"><input type="text" name="email" th:value="${member.email}"></td>
+			<td><input type="text" name="joinDate" th:value="${member.joinDate}" readonly></td>
+			<td><button type="submit" th:formaction="@{/member/detailMember}">수정</button><button type="submit" th:formaction="@{/member/deleteMember}">삭제</button></td>
+		</tr>
+	</table>
+	</form>
+</body>
+
+</html>
